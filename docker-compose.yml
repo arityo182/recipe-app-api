@@ -1,0 +1,35 @@
+# # version docker syntax using
+# version: "3.9"
+
+# # spesific file
+# services:
+#   # run service
+#   app:
+#     # build docker file in current directory
+#     build:
+#       # current directory
+#       context: .
+#       # acces network to connect server
+#       ports:
+#         - "8000:8000"
+#       # mapping directory system in docker container
+#       volumes:
+#         - ./app:/app
+#       # command run server
+#       command: >
+#         sh -c "python manage.py runserver 0.0.0.0:8000"
+
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
